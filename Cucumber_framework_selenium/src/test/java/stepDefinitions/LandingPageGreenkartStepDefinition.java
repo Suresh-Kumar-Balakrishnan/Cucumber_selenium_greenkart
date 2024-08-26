@@ -43,9 +43,9 @@ public class LandingPageGreenkartStepDefinition {
 	    // Write code here that turns the phrase above into concrete actions
 		System.out.println("Inside user is searching with the keyword on the homepage");
 		textcontextSetup.driver.findElement(By.xpath("//input[@type='search']")).sendKeys(string);
-		Thread.sleep(2000);
+		Thread.sleep(4000);
 		textcontextSetup.HomePageproductName = textcontextSetup.driver.findElement(By.cssSelector("h4.product-name")).getText().split("-")[0].trim();
-		System.out.println(HomePageproductName + " is the extracted product name from the Homepage ---HP");
+		System.out.println(textcontextSetup.HomePageproductName + " is the extracted product name from the Homepage ---HP");
 	}
 	
 
