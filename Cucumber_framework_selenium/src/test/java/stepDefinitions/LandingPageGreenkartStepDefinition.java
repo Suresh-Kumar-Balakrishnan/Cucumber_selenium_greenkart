@@ -13,6 +13,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import pageObjects.LandingPagePageObjects;
 import utils.TextcontextSetup;
 
 public class LandingPageGreenkartStepDefinition {
@@ -42,9 +43,12 @@ public class LandingPageGreenkartStepDefinition {
 	public void user_searched_with_the_keyword_in_the_home_page_and_extracted_the_actual_product(String string) throws InterruptedException {
 	    // Write code here that turns the phrase above into concrete actions
 		System.out.println("Inside user is searching with the keyword on the homepage");
-		textcontextSetup.driver.findElement(By.xpath("//input[@type='search']")).sendKeys(string);
+		LandingPagePageObjects landingpage = new LandingPagePageObjects(textcontextSetup.driver);
+		landingpage.searchitem(string);
+	//	textcontextSetup.driver.findElement(By.xpath("//input[@type='search']")).sendKeys(string);
 		Thread.sleep(2000);
-		textcontextSetup.HomePageproductName = textcontextSetup.driver.findElement(By.cssSelector("h4.product-name")).getText().split("-")[0].trim();
+		textcontextSetup.HomePageproductName = landingpage.getProductName().split("-")[0].trim();
+		//textcontextSetup.HomePageproductName = textcontextSetup.driver.findElement(By.cssSelector("h4.product-name")).getText().split("-")[0].trim();
 		System.out.println(HomePageproductName + " is the extracted product name from the Homepage ---HP");
 	}
 	
